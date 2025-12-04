@@ -43,7 +43,7 @@ spec:
   - name: hermetic
     value: false
 
-  # commented out to see if it fixes the https://issues.redhat.com/browse/RHOAIENG-41338
+  # the below is a full prefetch-input that was used on rhoai-2.25 before https://issues.redhat.com/browse/RHOAIENG-41338 started to fail
   # - name: prefetch-input
   #   value: |
   #     [
@@ -70,6 +70,15 @@ spec:
   #         "path": "sdk/python/feast/infra/feature_servers/multicloud"
   #       }
   #     ]
+
+  - name: prefetch-input
+    value: |
+      [
+        {
+          "type": "generic",
+          "path": "sdk/python/feast/infra/feature_servers/multicloud"
+        }
+      ]
   - name: build-source-image
     value: true
   - name: build-image-index

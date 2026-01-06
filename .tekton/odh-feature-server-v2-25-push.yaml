@@ -32,7 +32,7 @@ spec:
     - '{{target_branch}}-{{revision}}'
   - name: additional-labels
     value:
-    - version=v2.25.1
+    - version=v2.25.2
     - io.openshift.tags=odh-feature-server
   - name: output-image
     value: quay.io/rhoai/odh-feature-server-rhel9:{{target_branch}}
@@ -42,38 +42,27 @@ spec:
     value: "sdk/python/feast/infra/feature_servers/multicloud"
   - name: hermetic
     value: false
-
-  # the below is a full prefetch-input that was used on rhoai-2.25 before https://issues.redhat.com/browse/RHOAIENG-41338 started to fail
-  # - name: prefetch-input
-  #   value: |
-  #     [
-  #       {
-  #         "type": "pip",
-  #         "path": ".",
-  #         "requirements_files": [
-  #           "sdk/python/feast/infra/feature_servers/multicloud/requirements.txt",
-  #           "sdk/python/feast/infra/feature_servers/multicloud/requirements-ppc64le.txt"
-  #         ],
-  #         "requirements_build_files": [
-  #           "sdk/python/requirements/py3.11-minimal-requirements.txt",
-  #           "sdk/python/requirements/py3.11-minimal-sdist-requirements.txt",
-  #           "sdk/python/requirements/py3.11-minimal-sdist-requirements-build.txt"
-  #         ],
-  #         "allow_binary": "true"
-  #       },
-  #       {
-  #         "type": "rpm",
-  #         "path": "sdk/python/feast/infra/feature_servers/multicloud/offline"
-  #       },
-  #       {
-  #         "type": "generic",
-  #         "path": "sdk/python/feast/infra/feature_servers/multicloud"
-  #       }
-  #     ]
-
   - name: prefetch-input
     value: |
       [
+        {
+          "type": "pip",
+          "path": ".",
+          "requirements_files": [
+            "sdk/python/feast/infra/feature_servers/multicloud/requirements.txt",
+            "sdk/python/feast/infra/feature_servers/multicloud/requirements-ppc64le.txt"
+          ],
+          "requirements_build_files": [
+            "sdk/python/requirements/py3.11-minimal-requirements.txt",
+            "sdk/python/requirements/py3.11-minimal-sdist-requirements.txt",
+            "sdk/python/requirements/py3.11-minimal-sdist-requirements-build.txt"
+          ],
+          "allow_binary": "true"
+        },
+        {
+          "type": "rpm",
+          "path": "sdk/python/feast/infra/feature_servers/multicloud/offline"
+        },
         {
           "type": "generic",
           "path": "sdk/python/feast/infra/feature_servers/multicloud"

@@ -58,7 +58,7 @@ REQUIRED = [
     "prometheus_client",
     "psutil",
     "bigtree>=0.19.2",
-    "pyjwt",
+    "pyjwt>=2.12.0",
     "aiohttp>=3.13.3",
     "python-multipart>=0.0.22",
 ]

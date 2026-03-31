@@ -61,6 +61,7 @@ REQUIRED = [
     "pyjwt>=2.12.0",
     "aiohttp>=3.13.3",
     "python-multipart>=0.0.22",
+    "pyOpenSSL>=26.0.0",
 ]
 
 GCP_REQUIRED = [

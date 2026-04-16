@@ -23,7 +23,9 @@ export CXX=/opt/rh/gcc-toolset-13/root/usr/bin/g++
 : "${LINKFLAGS:=""}"
 
 # Installing Python build dependencies
-python${PYTHON_VERSION} -m pip install build wheel setuptools ninja pybind11 numpy setuptools_scm Cython==3.0.8
+# fix pandas build
+python${PYTHON_VERSION} -m pip install pandas==2.3.3 --extra-index-url https://wheels.developerfirst.ibm.com/ppc64le/linux/+simple/
+python${PYTHON_VERSION} -m pip install build wheel 'setuptools<78' ninja pybind11 numpy setuptools_scm Cython
 
 # Directory to collect built wheels
 mkdir -p /wheelhouse

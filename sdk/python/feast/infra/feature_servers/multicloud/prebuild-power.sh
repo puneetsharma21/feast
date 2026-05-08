@@ -105,8 +105,7 @@ export CXXFLAGS="-std=c++17"
 
 python${PYTHON_VERSION} -m pip install conan==1.64.1 setuptools==70.0.0
 
-git clone https://github.com/milvus-io/milvus-lite
+git clone -b v2.4.12 https://github.com/milvus-io/milvus-lite.git
 cd milvus-lite/python
-git checkout v2.4.12
 git submodule update --init --recursive
 python${PYTHON_VERSION} -m pip install -v -e .
